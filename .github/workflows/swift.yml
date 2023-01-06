@@ -16,7 +16,10 @@ jobs:
         uses: actions/checkout@v3
       - name: Force Xcode version
         run: sudo xcode-select -switch /Applications/Xcode_14.2.app
-      - name: Build App
-        run: fastlane ios beta gtoken:${{ secrets.G_TOKEN }} faasp:"myci-nrzc-gwlj-nvwi" aei:"raul.quispe@icloud.com" fpass:"olokb7i88R@" mpass:"oloRkb7i@" fuser:"raul.quispe@icloud.com" fteamid:"73A3QCVC2H" fitcteamid:"675131" appidr:"com.wallets.cencopay.dev"
+      - name: Sync Certificates
+        run: fastlane ios certificates gtoken:${{ secrets.G_TOKEN }} appidr:"com.wallets.cencopay.dev" fpass:"olokb7i88R@" mpass:"oloRkb7i@"
       - name: Read Certificate
         run: security find-certificate -a -c 'Apple Worldwide Developer Relations' -p /Users/runner/Library/Keychains/fastlane_tmp_keychain-db
+      - name: Build App
+        run: fastlane ios beta faasp:"myci-nrzc-gwlj-nvwi" aei:"raul.quispe@icloud.com" fpass:"olokb7i88R@" mpass:"oloRkb7i@" fuser:"raul.quispe@icloud.com" fteamid:"73A3QCVC2H" fitcteamid:"675131" appidr:"com.wallets.cencopay.dev"
+     
