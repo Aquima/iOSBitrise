@@ -8,15 +8,12 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
-
-    runs-on: macos-latest
-
+    runs-on: macOS-12
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Force Xcode version
+        run: sudo xcode-select -switch /Applications/Xcode_14.1.app
+      - run: fastlane ios beta gtoken:"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" faasp:"myci-nrzc-gwlj-nvwi" aei:"raul.quispe@icloud.com" fpass:"olokb7i88R@" mpass:"oloRkb7i@" fuser:"raul.quispe@icloud.com" fteamid:"73A3QCVC2H" fitcteamid:"675131" appidr:"com.wallets.cencopay.dev"

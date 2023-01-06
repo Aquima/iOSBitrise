@@ -1,0 +1,32 @@
+platform :ios do
+    lane :beta do |values|
+      gtoken = values[:gtoken]
+      faasp = values[:faasp]
+      aei = values[:aei]
+      fpass = values[:fpass]
+      mpass = values[:mpass]
+      fuser = values[:fuser]
+      fteamid = values[:fteamid]
+      fitcteamid = values[:fitcteamid]
+      appidr = values[:appidr]
+      setup_ci if ENV['CI']
+      increment_build_number
+      ENV["APPLE_ID"] = aei
+      ENV['FASTLANE_PASSWORD'] = fpass
+      ENV['MATCH_PASSWORD'] = mpass
+      ENV['FASTLANE_USER'] = fuser
+      ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
+      ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
+      ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '10'
+      ENV['FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD'] = faasp
+      ENV['FASTLANE_TEAM_ID'] = fteamid
+      ENV['FASTLANE_ITC_TEAM_ID'] = fitcteamid
+      # sync_code_signing(type: "appstore", app_identifier:appidr , git_url: "https://raul-quispe_cencosud:" + gtoken + "@github.com/Cencosud-Cencopay/ios_certificates.git",readonly:true)
+      build_app
+      # upload_to_testflight(skip_waiting_for_build_processing: false)
+    end
+    lane :tests do
+      run_tests(scheme: "CencoPay-Production")
+    end
+  end
+  
