@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - run: fastlane ios beta gtoken:"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" faasp:"myci-nrzc-gwlj-nvwi" aei:"raul.quispe@icloud.com" fpass:"olokb7i88R@" mpass:"oloRkb7i@" fuser:"raul.quispe@icloud.com" fteamid:"73A3QCVC2H" fitcteamid:"675131" appidr:"com.wallets.cencopay.dev"
+      - run: fastlane ios beta gtoken:${{ secrets.G_TOKEN }} faasp:"myci-nrzc-gwlj-nvwi" aei:"raul.quispe@icloud.com" fpass:"olokb7i88R@" mpass:"oloRkb7i@" fuser:"raul.quispe@icloud.com" fteamid:"73A3QCVC2H" fitcteamid:"675131" appidr:"com.wallets.cencopay.dev"
