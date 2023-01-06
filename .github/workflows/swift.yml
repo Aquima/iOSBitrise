@@ -22,4 +22,5 @@ jobs:
         run: security find-certificate -a -c 'Apple Worldwide Developer Relations' -p /Users/runner/Library/Keychains/fastlane_tmp_keychain-db
       - name: Build App
         run: fastlane ios beta faasp:"myci-nrzc-gwlj-nvwi" aei:"raul.quispe@icloud.com" fpass:"olokb7i88R@" mpass:"oloRkb7i@" fuser:"raul.quispe@icloud.com" fteamid:"73A3QCVC2H" fitcteamid:"675131" appidr:"com.wallets.cencopay.dev"
-     
+      - name: Read Log
+        run: echo /Users/runner/Library/Logs/gym/iOSBitrise-CencoPay-Production.log
