@@ -8,9 +8,9 @@
 
 scheme("CencoPay-Production")
 
-sdk("iphoneos16.1")
+sdk("iphoneos16.2")
 
 output_directory("./")
-destination("platform=iOS Simulator,OS=16.1,name=iPhone 14")
+destination("platform=iOS Simulator,OS=16.2,name=iPhone 14")
 clean(true)
 xcargs("-allowProvisioningUpdates")
