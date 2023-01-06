@@ -9,7 +9,7 @@ platform :ios do
       fitcteamid = values[:fitcteamid]
       appidr = values[:appidr]
       setup_ci if ENV['CI']
-      increment_build_number
+      
       ENV["APPLE_ID"] = aei
       ENV['FASTLANE_PASSWORD'] = fpass
       ENV['MATCH_PASSWORD'] = mpass
@@ -20,7 +20,8 @@ platform :ios do
       ENV['FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD'] = faasp
       ENV['FASTLANE_TEAM_ID'] = fteamid
       ENV['FASTLANE_ITC_TEAM_ID'] = fitcteamid
-      # sync_code_signing(type: "appstore", app_identifier:appidr , git_url: "https://aquima:" + gtoken + "@github.com/Aquima/ios_certificates.git",readonly:true)
+     update_code_signing_settings(use_automatic_signing: true)
+      increment_build_number
       build_app
       # upload_to_testflight(skip_waiting_for_build_processing: false)
     end
@@ -32,7 +33,7 @@ platform :ios do
       setup_ci if ENV['CI']
       ENV['FASTLANE_PASSWORD'] = fpass
       ENV['MATCH_PASSWORD'] = mpass
-      sync_code_signing(type: "appstore", app_identifier:appidr , git_url: "https://aquima:" + gtoken + "@github.com/Aquima/ios_certificates.git",readonly:true)
+      sync_code_signing(type: "appstore", app_identifier:appidr , git_url: "https://aquima:" + gtoken + "@github.com/Aquima/ios_certificates.git", force_for_new_devices: true, readonly:true)
     end
     lane :tests do
       run_tests(scheme: "CencoPay-Production")
