@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 jobs:
   build:
-    runs-on: macOS-12
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
