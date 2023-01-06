@@ -22,7 +22,6 @@ platform :ios do
       ENV['FASTLANE_TEAM_ID'] = fteamid
       ENV['FASTLANE_ITC_TEAM_ID'] = fitcteamid
       sync_code_signing(type: "appstore", app_identifier:appidr , git_url: "https://aquima:" + gtoken + "@github.com/Aquima/ios_certificates.git",readonly:true)
-      security find-certificate -a -c 'Apple Worldwide Developer Relations' -p /Users/runner/Library/Keychains/fastlane_tmp_keychain-db
       build_app
       # upload_to_testflight(skip_waiting_for_build_processing: false)
     end
