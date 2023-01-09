@@ -23,7 +23,7 @@ platform :ios do
     ENV['FASTLANE_ITC_TEAM_ID'] = fitcteamid
     sync_code_signing(type: "appstore", app_identifier:appidr , git_url: "https://aquima:" + gtoken + "@github.com/Aquima/certificates.git",readonly:true)
     build_app
-    # upload_to_testflight(skip_waiting_for_build_processing: false)
+    upload_to_testflight(skip_waiting_for_build_processing: false)
   end
   lane :tests do
     run_tests(scheme: "CencoPay-Prod")
